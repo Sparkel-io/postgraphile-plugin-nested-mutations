@@ -656,7 +656,7 @@ module.exports = function PostGraphileNestedMutationPlugin(builder) {
 
             if (fieldValue.updateById || fieldValue.updateByNodeId) {
               await Promise.all(
-                ['updateById', 'updateByNodeId']
+                Object.keys(fieldValue)
                   .filter((f) => fieldValue[f])
                   .map(async (f) => {
                     await Promise.all(
